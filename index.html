@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPS Data</title>
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
@@ -30,37 +27,10 @@
             margin: 10px 0;
             width: fit-content;
         }
-        #latitude {
-            color: #1abc9c;
-        }
-        #longitude {
-            color: #3498db;
-        }
-    </style>
+</style>
 </head>
 <body>
-    <h1>Current GPS Data</h1>
-    <p id="latitude">Latitude: Loading...</p>
-    <p id="longitude">Longitude: Loading...</p>
-
-    <script>
-        async function fetchData() {
-            try {
-                const response = await fetch('/data');
-                const data = await response.json();
-                
-                document.getElementById('latitude').textContent = 'Latitude: ' + data.Lat;
-                document.getElementById('longitude').textContent = 'Longitude: ' + data.Long;
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
-        // Fetch data every 5 seconds
-        setInterval(fetchData, 5000);
-
-        // Fetch data when page loads
-        fetchData();
+    <h1>Testing chemLab</h1>
     </script>
 </body>
 </html>
