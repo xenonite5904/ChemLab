@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            background-color: #e7f3ff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            width: fit-content;
+        }
+        #latitude {
+            color: #1abc9c;
+        }
+        #longitude {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current GPS Data</h1>
+    <p id="latitude">Latitude: Loading...</p>
+    <p id="longitude">Longitude: Loading...</p>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('/data');
+                const data = await response.json();
+                
+                document.getElementById('latitude').textContent = 'Latitude: ' + data.Lat;
+                document.getElementById('longitude').textContent = 'Longitude: ' + data.Long;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Fetch data every 5 seconds
+        setInterval(fetchData, 5000);
+
+        // Fetch data when page loads
+        fetchData();
+    </script>
+</body>
+</html>
